@@ -11,6 +11,7 @@ import {
   extendTheme,
   VStack,
   Box,
+  Divider,
 } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
 

@@ -1,9 +1,5 @@
-# NativeBase TypeScript Expo Template
+# Crypto assets tracking
 
-The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
+Data provides by CoinMarketCap API.
 
 ## Usage
-
-```sh
-expo init my-app --template @native-base/expo-template-typescript
-```
