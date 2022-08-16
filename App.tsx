@@ -14,6 +14,7 @@ import {
   Divider,
 } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
+import Navigation from "./src/navigation/Navigation";
 
 // Define the config
 const config = {
@@ -28,5 +29,9 @@ declare module "native-base" {
   interface ICustomTheme extends MyThemeType {}
 }
 export default function App() {
-  return <NativeBaseProvider></NativeBaseProvider>;
+  return (
+    <NativeBaseProvider>
+      <Navigation />
+    </NativeBaseProvider>
+  );
 }
