@@ -12,7 +12,7 @@ const config = {
 export const theme = extendTheme({ config });
 type MyThemeType = typeof theme;
 declare module "native-base" {
-  type ICustomTheme = MyThemeType
+  type ICustomTheme = MyThemeType;
 }
 export default function App() {
   return (

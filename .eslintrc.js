@@ -24,7 +24,7 @@ module.exports = {
     },
     project: "./tsconfig.json",
   },
-  plugins: ["react", "react-hooks", "@typescript-eslint"],
+  plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
   rules: {
     indent: ["error", 2, { SwitchCase: 1 }],
     quotes: ["error", "double", { avoidEscape: true }],
@@ -35,6 +35,8 @@ module.exports = {
     "@typescript-eslint/no-namespace": "off",
     "react/display-name": "off",
     "react/prop-types": "off",
+    "prettier/prettier": "error",
+    "no-console": "error",
   },
   settings: {
     react: {
