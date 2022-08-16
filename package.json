@@ -17,7 +17,8 @@
     "eject": "expo eject",
     "lint": "eslint . --ext .ts,.tsx.",
     "lint:fix": "eslint ./src/**/*.{tsx,ts} --fix",
-    "format": "prettier --check ./src"
+    "format": "prettier --check ./src",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.3.2",
@@ -46,10 +47,18 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "typescript": "~4.3.5"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,tsx}": [
+      "eslint --ext .tsx --ext .ts src/ --fix"
+    ],
+    "./src/**": [
+      "prettier --write ."
+    ]
   },
   "author": "amorfatih",
   "private": false
