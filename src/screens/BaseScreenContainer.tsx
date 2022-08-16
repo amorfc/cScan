@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentBaseProps } from "../types/commonTypes";
+import { ComponentBaseProps } from "../types/common";
 
 interface BaseScreenContainerProps extends ComponentBaseProps {}
 
