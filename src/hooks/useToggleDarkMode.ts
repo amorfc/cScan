@@ -1,6 +1,6 @@
 import { useColorMode } from "native-base";
 
-const useToggleDarkMode = () => {
+export const useToggleDarkMode = () => {
   const { toggleColorMode } = useColorMode();
 
   return {

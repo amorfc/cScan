@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentBaseProps } from "../types/common";
 
-interface BaseScreenContainerProps extends ComponentBaseProps {}
+type BaseScreenContainerProps = ComponentBaseProps;
 
 const BaseScreenContainer = (props: BaseScreenContainerProps) => {
   return <>{props.children}</>;
