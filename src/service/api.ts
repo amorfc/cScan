@@ -25,7 +25,7 @@ export class ApiService {
   }
 
   private setBaseUrl() {
-    baseURL = "https://pro-api.coinmarketcap.com";
+    baseURL = "https://pro-api.coinmarketcap.com/v1/";
   }
 
   private setHeaders() {
@@ -45,9 +45,10 @@ export class ApiService {
 
   private setResponseInterceptors() {
     axios.interceptors.response.use(
-      (response) => response,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      (response) => response.data,
       async (error) => {
-        if (error.response) {
+        if (error?.response) {
           const { status } = error.response;
           if (status === 401) {
             // handle unauth
