@@ -1,5 +1,5 @@
 import React from "react";
-import { ComponentBaseProps } from "../types/common";
+import { ComponentBaseProps } from "../common/types/common";
 
 type BaseScreenContainerProps = ComponentBaseProps;
 
