@@ -3,6 +3,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AssetDetail from "../screens/AssetDetail/Portfolio";
 import Markets from "../screens/Markets/Markets";
 import NotFound from "../screens/NotFound/NotFound";
 import Portfolio from "../screens/Portfolio/Portfolio";
@@ -34,6 +35,7 @@ const BottomTabNavigator = () => {
     <BottomTab.Navigator>
       <BottomTab.Screen name={"Markets"} component={Markets} />
       <BottomTab.Screen name={"Portfolio"} component={Portfolio} />
+      <BottomTab.Screen name={"AssetDetail"} component={AssetDetail} />
     </BottomTab.Navigator>
   );
 };
