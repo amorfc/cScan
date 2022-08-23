@@ -6,10 +6,16 @@ const Api = new ApiService();
 
 const CryptoCurrencyApi = () => ({
   getHistoricalList: (params?) => {
-    const url = `${URL.CRYPTOCURRENY}${URL.LISTINGS}${URL.HISTORICAL}`;
+    const url = `${URL.CRYPTOCURRENY}/${URL.LISTINGS}/${URL.HISTORICAL}`;
     const method = API_SERVICE_METHOD.GET;
 
-    return Api.start({ url, method });
+    return Api.start({ url, method, params });
+  },
+  getLatestList: (params?) => {
+    const url = `${URL.CRYPTOCURRENY}/${URL.LISTINGS}/${URL.LATEST}`;
+    const method = API_SERVICE_METHOD.GET;
+
+    return Api.start({ url, method, params });
   },
 });
 
