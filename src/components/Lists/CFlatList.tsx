@@ -1,7 +1,10 @@
 import { FlatList as NBFlatList } from "native-base";
 import React from "react";
+import { FlatListProps } from "react-native";
 
-const CFlatList = (props) => {
+type CFlatListProps<T> = FlatListProps<T>;
+
+const CFlatList = <T,>(props: CFlatListProps<T>) => {
   return <NBFlatList {...props} />;
 };
 
