@@ -58,6 +58,11 @@ const BottomTabNavigator = () => {
         component={MarketsNavigator}
         options={defaultBottomTabBarScreenOptions()}
       />
+      <BottomTab.Screen
+        name={"Portfolio"}
+        component={Portfolio}
+        options={defaultBottomTabBarScreenOptions()}
+      />
     </BottomTab.Navigator>
   );
 };
