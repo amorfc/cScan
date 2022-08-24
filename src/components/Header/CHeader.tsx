@@ -1,4 +1,4 @@
-import { Container, Flex, HStack } from "native-base";
+import { Flex, HStack } from "native-base";
 import React from "react";
 import { ComponentBaseProps } from "../../common/types/common";
 import CHeading from "../Text/CHeading";
@@ -17,26 +17,30 @@ const CHeader = (props: CHeaderProps) => {
     if (leftAccessorize) {
       return leftAccessorize();
     }
-    return <Container minH={"10"} minW={"100"} />;
+    return null;
   };
   const renderRightAccessorize = () => {
     if (rightAccesorize) {
       return rightAccesorize();
     }
-    return <Container minH={"10"} minW={"100"} />;
+    return null;
   };
 
   return (
     <HStack bg={"amber.300"} p={"3"} maxH={["md", "lg", "xl"]} justifyContent={"center"}>
-      <Flex bgColor={"red.100"}>{renderLeftAccessorize()}</Flex>
-      <Flex bgColor={"blue.300"} justifyContent={"center"}>
+      <Flex flex={1} alignItems={"flex-start"}>
+        {renderLeftAccessorize()}
+      </Flex>
+      <Flex flex={1} alignItems={"center"} justifyContent={"center"}>
         {label && (
           <CHeading>
             <CText text={label} />
           </CHeading>
         )}
       </Flex>
-      <Flex bgColor={"brown"}>{renderRightAccessorize()}</Flex>
+      <Flex flex={1} alignItems={"flex-end"}>
+        {renderRightAccessorize()}
+      </Flex>
     </HStack>
   );
 };
