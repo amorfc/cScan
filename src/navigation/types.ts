@@ -14,15 +14,19 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
+export type MarketsStackParamList = {
+  Markets: undefined;
+  AssetDetail: undefined;
+};
+
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
   Screen
 >;
 
 export type RootTabParamList = {
-  Markets: undefined;
+  MarketsStack: undefined;
   Portfolio: undefined;
-  AssetDetail: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

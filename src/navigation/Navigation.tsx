@@ -7,7 +7,8 @@ import AssetDetail from "../screens/AssetDetail/Portfolio";
 import Markets from "../screens/Markets/Markets";
 import NotFound from "../screens/NotFound/NotFound";
 import Portfolio from "../screens/Portfolio/Portfolio";
-import { RootStackParamList, RootTabParamList } from "./types";
+import { defaultBottomTabBarScreenOptions, defaultScreenOptions } from "./navUtils";
+import { MarketsStackParamList, RootStackParamList, RootTabParamList } from "./types";
 
 const Navigation = () => {
   return (
@@ -17,13 +18,32 @@ const Navigation = () => {
   );
 };
 
+const MarketsStack = createNativeStackNavigator<MarketsStackParamList>();
+
+const MarketsNavigator = () => {
+  return (
+    <MarketsStack.Navigator>
+      <MarketsStack.Screen name={"Markets"} component={Markets} options={defaultScreenOptions()} />
+      <MarketsStack.Screen
+        name={"AssetDetail"}
+        component={AssetDetail}
+        options={defaultScreenOptions()}
+      />
+    </MarketsStack.Navigator>
+  );
+};
+
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   return (
     <RootStack.Navigator>
-      <RootStack.Screen name={"Root"} component={BottomTabNavigator} />
-      <RootStack.Screen name={"NotFound"} component={NotFound} />
+      <RootStack.Screen
+        name={"Root"}
+        component={BottomTabNavigator}
+        options={defaultScreenOptions()}
+      />
+      <RootStack.Screen name={"NotFound"} component={NotFound} options={defaultScreenOptions()} />
     </RootStack.Navigator>
   );
 };
@@ -33,9 +53,11 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name={"Markets"} component={Markets} />
-      <BottomTab.Screen name={"Portfolio"} component={Portfolio} />
-      <BottomTab.Screen name={"AssetDetail"} component={AssetDetail} />
+      <BottomTab.Screen
+        name={"MarketsStack"}
+        component={MarketsNavigator}
+        options={defaultBottomTabBarScreenOptions()}
+      />
     </BottomTab.Navigator>
   );
 };
