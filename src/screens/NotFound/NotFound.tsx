@@ -1,8 +1,8 @@
 import React from "react";
-import BaseScreenContainer from "../BaseScreenContainer";
+import CScreenContainer from "../CScreenContainer";
 
 const NotFound = () => {
-  return <BaseScreenContainer></BaseScreenContainer>;
+  return <CScreenContainer></CScreenContainer>;
 };
 
 export default NotFound;

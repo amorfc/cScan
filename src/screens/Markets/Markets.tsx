@@ -1,11 +1,13 @@
 import React from "react";
-import { useLatestCCList } from "../../swr/useLatestCCList";
-import BaseScreenContainer from "../BaseScreenContainer";
+import CScreenContainer from "../CScreenContainer";
+import MarketList from "./MarketList";
 
 const Markets = () => {
-  const { data, error, isValidating } = useLatestCCList();
-
-  return <BaseScreenContainer></BaseScreenContainer>;
+  return (
+    <CScreenContainer headerTitle="Markets">
+      <MarketList />
+    </CScreenContainer>
+  );
 };
 
 export default Markets;
