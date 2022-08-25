@@ -1,5 +1,5 @@
 # Crypto assets tracking
 
-Data provides by CoinMarketCap API.
+Data provided by CoinMarketCap API.
 
 ## Usage
