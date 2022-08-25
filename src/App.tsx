@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider, extendTheme } from "native-base";
+import { NativeBaseProvider, extendTheme, StatusBar } from "native-base";
 import Navigation from "./navigation/Navigation";
 
 // Define the config
