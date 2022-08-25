@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import CStatusBar from "./components/StatusBar/CStatusBar";
 import Navigation from "./navigation/Navigation";
 
 const AppContainer = () => {
+  const [isNavReady, setIsNavReady] = useState(false);
   return (
     <>
-      <CStatusBar />
-      <Navigation />
+      {isNavReady && <CStatusBar />}
+      <Navigation onNavReady={setIsNavReady} />
     </>
   );
 };
