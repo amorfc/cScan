@@ -1,9 +1,13 @@
 import { Text } from "native-base";
 import React from "react";
 
-const CText = (props) => {
-  const { label } = props;
-  return <Text>{label}</Text>;
+interface CTextProps {
+  text: string;
+}
+
+const CText = (props: CTextProps) => {
+  const { text } = props;
+  return <Text>{text}</Text>;
 };
 
 export default CText;
