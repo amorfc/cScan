@@ -1,6 +1,7 @@
 import React from "react";
 import { NativeBaseProvider, extendTheme, StatusBar } from "native-base";
 import Navigation from "./navigation/Navigation";
+import AppContainer from "./AppContainer";
 
 // Define the config
 const config = {
@@ -17,7 +18,7 @@ declare module "native-base" {
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Navigation />
+      <AppContainer />
     </NativeBaseProvider>
   );
 }
