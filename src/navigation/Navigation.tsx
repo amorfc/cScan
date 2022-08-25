@@ -7,12 +7,21 @@ import AssetDetail from "../screens/AssetDetail/Portfolio";
 import Markets from "../screens/Markets/Markets";
 import NotFound from "../screens/NotFound/NotFound";
 import Portfolio from "../screens/Portfolio/Portfolio";
-import { defaultBottomTabBarScreenOptions, defaultScreenOptions } from "./navUtils";
+import { defaultBottomTabBarScreenOptions, defaultScreenOptions, navigationRef } from "./navUtils";
 import { MarketsStackParamList, RootStackParamList, RootTabParamList } from "./types";
 
-const Navigation = () => {
+interface NavigationProps {
+  onNavReady: (isReady: boolean) => void;
+}
+
+const Navigation = (props: NavigationProps) => {
+  const { onNavReady } = props;
+  const onReady = () => {
+    onNavReady && onNavReady(true);
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={onReady} ref={navigationRef}>
       <RootNavigator />
     </NavigationContainer>
   );

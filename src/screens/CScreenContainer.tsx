@@ -1,6 +1,6 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { ComponentBaseProps } from "../common/types/common";
+import CBox from "../components/Box/CBox";
 import CHeader from "../components/Header/CHeader";
 
 interface BaseScreenContainerProps extends ComponentBaseProps {
@@ -10,10 +10,10 @@ interface BaseScreenContainerProps extends ComponentBaseProps {
 const CScreenContainer = (props: BaseScreenContainerProps) => {
   const { headerTitle } = props;
   return (
-    <SafeAreaView>
+    <CBox>
       <CHeader label={headerTitle} />
       {props.children}
-    </SafeAreaView>
+    </CBox>
   );
 };
 
