@@ -1,11 +1,11 @@
-import { VStack } from "native-base";
+import { Stack } from "native-base";
 import React from "react";
 import { ComponentBaseProps } from "../../common/types/common";
 
 type BaseContainerProps = ComponentBaseProps;
 
 const BaseContainer = (props: BaseContainerProps) => {
-  return <VStack>{props.children}</VStack>;
+  return <Stack>{props.children}</Stack>;
 };
 
 export default BaseContainer;
