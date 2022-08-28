@@ -15,7 +15,7 @@ const MarketList = () => {
   return (
     <Flex px={"5"} py={"2"}>
       <CFlatList<MarketItem>
-        data={markets}
+        data={markets ?? []}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
       />
