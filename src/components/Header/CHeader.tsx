@@ -27,7 +27,7 @@ const CHeader = (props: CHeaderProps) => {
   };
 
   return (
-    <HStack bg={"amber.300"} p={"2"} maxH={["md", "lg", "xl"]} justifyContent={"center"}>
+    <HStack p={"2"} maxH={["md", "lg", "xl"]} justifyContent={"center"}>
       <Flex flex={1} alignItems={"flex-start"}>
         {renderLeftAccessorize()}
       </Flex>
