@@ -6,13 +6,14 @@ interface TItem {
   id: number | string;
 }
 
-interface TRenderItem<T> {
+export interface TRenderItem<T> {
   item: T;
+  index: number;
 }
 
 interface CFlatListProps<T extends TItem> extends FlatListProps<T> {
   data: T[];
-  renderItem: ({ item }: TRenderItem<T>) => JSX.Element | null;
+  renderItem: (params: TRenderItem<T>) => JSX.Element | null;
 }
 
 const CFlatList = <T extends TItem>(props: CFlatListProps<T>) => {
