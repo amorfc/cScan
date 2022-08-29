@@ -58,7 +58,7 @@ const MarketList = () => {
       <ListOrderHeader />
       <CFlatList<MarketItem>
         data={markets ?? []}
-        renderItem={(params) => renderItem(params)}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
       />
     </Flex>
