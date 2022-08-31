@@ -1,12 +1,17 @@
-import { Flex } from "native-base";
+import { Center, Flex, Stack } from "native-base";
 import React from "react";
 import AssetCard from "../../components/Cards/AssetCard";
+import BaseContainer from "../../components/Container/BaseContainer";
 import CFlatList, { TRenderItem } from "../../components/Lists/CFlatList";
+import CText from "../../components/Text/CText";
 import { MarketItem } from "../../models/serviceModels";
 import { useLatestCCList } from "../../swr/useLatestCCList";
 
 const MarketList = () => {
   const { data: markets, error, isValidating } = useLatestCCList<MarketItem[], string>();
+  //Temp variable to order the list
+  const currentCurrency = "USD";
+  const currentPercentageType = "24";
 
   const renderItem = ({ item, index }: TRenderItem<MarketItem>) => {
     //Temp usd
@@ -27,11 +32,33 @@ const MarketList = () => {
     );
   };
 
+  const ListOrderHeader = () => {
+    return (
+      <BaseContainer>
+        <Stack direction={["row", "row", "row"]}>
+          <Center flex={1}>
+            <CText text="#" />
+          </Center>
+          <Center flex={6}>
+            <CText text="Market Cap" />
+          </Center>
+          <Center>
+            <CText text={`Price(${currentCurrency})`} />
+          </Center>
+          <Center flex={4} alignItems={"flex-end"}>
+            <CText text={`${currentPercentageType} %`} />
+          </Center>
+        </Stack>
+      </BaseContainer>
+    );
+  };
+
   return (
     <Flex px={"5"} py={"2"}>
+      <ListOrderHeader />
       <CFlatList<MarketItem>
         data={markets ?? []}
-        renderItem={(params) => renderItem(params)}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
       />
     </Flex>

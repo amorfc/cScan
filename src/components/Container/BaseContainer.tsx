@@ -1,11 +1,11 @@
-import { Stack } from "native-base";
+import { Box, IBoxProps } from "native-base";
 import React from "react";
 import { ComponentBaseProps } from "../../common/types/common";
 
-type BaseContainerProps = ComponentBaseProps;
+type BaseContainerProps = ComponentBaseProps & IBoxProps;
 
 const BaseContainer = (props: BaseContainerProps) => {
-  return <Stack>{props.children}</Stack>;
+  return <Box {...props}>{props.children}</Box>;
 };
 
 export default BaseContainer;
