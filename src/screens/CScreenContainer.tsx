@@ -10,7 +10,7 @@ interface BaseScreenContainerProps extends ComponentBaseProps {
 const CScreenContainer = (props: BaseScreenContainerProps) => {
   const { headerTitle } = props;
   return (
-    <CBox>
+    <CBox flex={1}>
       <CHeader label={headerTitle} />
       {props.children}
     </CBox>
