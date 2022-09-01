@@ -1,5 +1,5 @@
 import React from "react";
-// import CTabView from "../../components/TabView/CTabView";
+import CTabView from "../../components/TabView/CTabView";
 import CScreenContainer from "../CScreenContainer";
 import MarketList from "./MarketList";
 
@@ -23,7 +23,7 @@ const Markets = () => {
 
   return (
     <CScreenContainer headerTitle="Markets">
-      {/* <CTabView routes={renderTabs} /> */}
+      <CTabView routes={renderTabs} />
     </CScreenContainer>
   );
 };
