@@ -2,7 +2,12 @@ import React, { createRef, useRef } from "react";
 import { Animated, useWindowDimensions, View } from "react-native";
 import CTVTabs from "./CTVTabs";
 
-const CTabView = ({ routes }) => {
+export interface CTVRoute {
+  title: string;
+  render: JSX.Element;
+  key: string;
+  ref: React.RefObject<View>;
+}
   const { width, height } = useWindowDimensions();
   const scrollX = useRef(new Animated.Value(0)).current;
   const tabViewContainerRef = useRef();
