@@ -1,17 +1,24 @@
 import { View } from "native-base";
 import React, { forwardRef } from "react";
+import { TouchableOpacity } from "react-native";
 import CBox from "../Box/CBox";
 import CText from "../Text/CText";
 
-const CTVTab = forwardRef((props, ref) => {
-  const { item } = props;
+interface CTVTabProps {
+  item: any;
+  onTabPress: () => void;
+}
+const CTVTab = forwardRef((props: CTVTabProps, ref) => {
+  const { item, onTabPress } = props;
 
   return (
-    <View ref={ref}>
-      <CBox px={"4"}>
-        <CText text={item.title} />
-      </CBox>
-    </View>
+    <TouchableOpacity onPress={onTabPress}>
+      <View ref={ref}>
+        <CBox px={"4"}>
+          <CText text={item.title} />
+        </CBox>
+      </View>
+    </TouchableOpacity>
   );
 });
 
