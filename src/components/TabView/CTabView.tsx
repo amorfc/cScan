@@ -8,6 +8,14 @@ export interface CTVRoute {
   key: string;
   ref: React.RefObject<View>;
 }
+
+interface CTabViewProps {
+  routes: Omit<CTVRoute, "ref">[];
+}
+
+const CTabView = (props: CTabViewProps) => {
+  const { routes } = props;
+
   const { width, height } = useWindowDimensions();
   const scrollX = useRef(new Animated.Value(0)).current;
   const tabViewContainerRef = useRef();
