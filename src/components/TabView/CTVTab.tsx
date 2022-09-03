@@ -3,9 +3,10 @@ import React, { forwardRef } from "react";
 import { TouchableOpacity } from "react-native";
 import CBox from "../Box/CBox";
 import CText from "../Text/CText";
+import { CTVRoute } from "./CTabView";
 
 interface CTVTabProps {
-  item: any;
+  item: Omit<CTVRoute, "render" | "ref">;
   onTabPress: () => void;
 }
 const CTVTab = forwardRef((props: CTVTabProps, ref) => {
