@@ -1,8 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Animated, View } from "react-native";
+import { Animated, HostComponent, View } from "react-native";
 import { CTVRoute } from "./CTabView";
 import CTVIndicator from "./CTVIndicator";
 import CTVTab from "./CTVTab";
+
+interface Measure {
+  x: number;
+  width: number;
+  y: number;
+  height: number;
+}
 
 interface CTVTabsProps {
   routes: CTVRoute[];
@@ -12,11 +19,11 @@ interface CTVTabsProps {
 
 const CTVTabs = (props: CTVTabsProps) => {
   const { routes, scrollX, onTabPress } = props;
-  const containerRef = useRef<View>();
-  const [measures, setMeasures] = useState([]);
+  const containerRef = useRef<HostComponent<unknown>>();
+  const [measures, setMeasures] = useState<Measure[]>([]);
 
   useEffect(() => {
-    const tempMeasures = [];
+    const tempMeasures: Measure[] = [];
     routes?.forEach((item: CTVRoute) => {
       item.ref?.current?.measureLayout(
         containerRef?.current,

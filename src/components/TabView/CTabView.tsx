@@ -18,14 +18,12 @@ const CTabView = (props: CTabViewProps) => {
 
   const { width, height } = useWindowDimensions();
   const scrollX = useRef(new Animated.Value(0)).current;
-  const tabViewContainerRef = useRef();
+  const tabViewContainerRef = useRef<Animated.FlatList>();
 
-  const finalRoutes =
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
-    routes?.map((el) => ({
-      ...el,
-      ref: createRef(),
-    }));
+  const finalRoutes: (CTVRoute & { ref: React.RefObject<View> })[] = routes?.map((el) => ({
+    ...el,
+    ref: createRef<View>(),
+  }));
 
   const onTabPress = (tabIndex) => {
     tabViewContainerRef?.current?.scrollToOffset({
@@ -39,7 +37,7 @@ const CTabView = (props: CTabViewProps) => {
       <Animated.FlatList
         ref={tabViewContainerRef}
         data={finalRoutes}
-        keyExtractor={(item) => item?.key}
+        keyExtractor={(item: CTVRoute) => item?.key}
         horizontal={true}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
           useNativeDriver: false,
