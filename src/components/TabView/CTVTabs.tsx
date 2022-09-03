@@ -1,9 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { View } from "react-native";
+import { Animated, View } from "react-native";
 import CTVIndicator from "./CTVIndicator";
 import CTVTab from "./CTVTab";
 
-const CTVTabs = (props) => {
+interface CTVTabsProps {
+  routes: any[];
+  onTabPress: (tabIndex: number) => void;
+  scrollX: Animated.Value;
+}
+
+const CTVTabs = (props: CTVTabsProps) => {
   const { routes, scrollX, onTabPress } = props;
   const containerRef = useRef();
   const [measures, setMeasures] = useState([]);
@@ -18,9 +24,9 @@ const CTVTabs = (props) => {
         }
       });
     });
-  }, []);
+  }, [routes]);
 
-  const onTabItemPress = useCallback((index: number): void => onTabPress(index), []);
+  const onTabItemPress = useCallback((index: number): void => onTabPress(index), [onTabPress]);
 
   return (
     <View>
