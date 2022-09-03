@@ -10,12 +10,12 @@ const TAB_VIEW_ROUTES_KEY = {
 const Markets = () => {
   const renderTabs = [
     {
-      title: "Markets",
+      title: "Market",
       render: <MarketList />,
       key: TAB_VIEW_ROUTES_KEY.MARKET_LIST,
     },
     {
-      title: "Markets",
+      title: "Market2",
       render: <MarketList />,
       key: "temp1",
     },

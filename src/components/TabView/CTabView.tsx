@@ -1,59 +1,52 @@
-import React from "react";
-import { useWindowDimensions } from "react-native";
-import { Route, TabBar, TabView, TabViewProps } from "react-native-tab-view";
-import CText from "../Text/CText";
+import React, { createRef, useRef } from "react";
+import { Animated, useWindowDimensions, View } from "react-native";
+import CTVTabs from "./CTVTabs";
 
-interface TCTabViewRoute extends Route {
+export interface CTVRoute {
   title: string;
-  render: any;
+  render: JSX.Element;
   key: string;
-  iconEl?: JSX.Element;
+  ref: React.RefObject<View>;
 }
 
-type OmittedTabViewProps<T extends Route> = Omit<
-  TabViewProps<T>,
-  "onIndexChange" | "navigationState" | "renderScene"
->;
-
-interface CTabViewProps extends OmittedTabViewProps<TCTabViewRoute> {
-  onChange?: ({ index, route }: { index: number; route: TCTabViewRoute }) => void;
-  renderCustomTabBar?: (props: any) => JSX.Element;
-  routes: Array<TCTabViewRoute>;
+interface CTabViewProps {
+  routes: Omit<CTVRoute, "ref">[];
 }
 
 const CTabView = (props: CTabViewProps) => {
-  const { onChange, routes, renderCustomTabBar } = props;
+  const { routes } = props;
 
-  const [index, setIndex] = React.useState(0);
+  const { width, height } = useWindowDimensions();
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const tabViewContainerRef = useRef<Animated.FlatList>();
 
-  const layout = useWindowDimensions();
+  const finalRoutes: (CTVRoute & { ref: React.RefObject<View> })[] = routes?.map((el) => ({
+    ...el,
+    ref: createRef<View>(),
+  }));
 
-  const onChangeTab = (index: number) => {
-    setIndex(index);
-    onChange && onChange({ index, route: routes[index] });
+  const onTabPress = (tabIndex) => {
+    tabViewContainerRef?.current?.scrollToOffset({
+      offset: tabIndex * width,
+    });
   };
 
-  const renderTabBar = (props) => (
-    <TabBar
-      {...props}
-      indicatorContainerStyle={{ height: 0 }}
-      style={{ backgroundColor: "white" }}
-      renderLabel={({ route, focused }: { route: TCTabViewRoute; focused: boolean }) => (
-        <CText text={route.title} />
-      )}
-    />
-  );
-
   return (
-    <TabView
-      navigationState={{ index, routes }}
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      renderScene={({ route }) => route.render}
-      onIndexChange={onChangeTab}
-      initialLayout={{ width: layout.width }}
-      renderTabBar={renderTabBar}
-      {...props}
-    />
+    <View>
+      <CTVTabs routes={finalRoutes} onTabPress={onTabPress} scrollX={scrollX} />
+      <Animated.FlatList
+        ref={tabViewContainerRef}
+        data={finalRoutes}
+        keyExtractor={(item: CTVRoute) => item?.key}
+        horizontal={true}
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
+          useNativeDriver: false,
+        })}
+        bounces={false}
+        pagingEnabled
+        renderItem={({ item }) => <View style={{ width, height }}>{item.render}</View>}
+      />
+    </View>
   );
 };
 
