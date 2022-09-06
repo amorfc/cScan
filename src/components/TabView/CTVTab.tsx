@@ -2,13 +2,14 @@ import { View } from "native-base";
 import React, { forwardRef } from "react";
 import { TouchableOpacity } from "react-native";
 import CBox from "../Box/CBox";
-import CText from "../Text/CText";
+import CText, { CTextFontSize } from "../Text/CText";
 import { CTVRoute } from "./CTabView";
 
 interface CTVTabProps {
   item: Omit<CTVRoute, "render" | "ref">;
   onTabPress: () => void;
 }
+
 const CTVTab = forwardRef((props: CTVTabProps, ref) => {
   const { item, onTabPress } = props;
 
@@ -16,7 +17,7 @@ const CTVTab = forwardRef((props: CTVTabProps, ref) => {
     <TouchableOpacity onPress={onTabPress}>
       <View ref={ref}>
         <CBox px={"4"}>
-          <CText text={item.title} />
+          <CText fontSize={CTextFontSize.LG} text={item.title} />
         </CBox>
       </View>
     </TouchableOpacity>
