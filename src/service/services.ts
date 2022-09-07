@@ -19,4 +19,14 @@ const CryptoCurrencyApi = () => ({
   },
 });
 
+const ExchangeApi = () => ({
+  getLatestExchanges: (params?) => {
+    const url = `${URL.EXCHANGE}/${URL.LISTINGS}/${URL.LATEST}`;
+    const method = API_SERVICE_METHOD.GET;
+
+    return Api.start({ url, method, params });
+  },
+});
+
 export const cryptoCurrencyApi = CryptoCurrencyApi();
+export const exchangeApi = ExchangeApi();
