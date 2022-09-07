@@ -38,3 +38,7 @@ export interface Usd {
   tvl: any;
   last_updated: string;
 }
+
+export interface ExchangeItem {
+  id: number;
+}
