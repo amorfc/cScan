@@ -3,3 +3,8 @@ export interface SWRReturnType<D, E> {
   error: E | null | undefined;
   isValidating: boolean;
 }
+
+export interface BaseSWRHookParams {
+  reqParams?: object;
+  swrOptions?: object;
+}
