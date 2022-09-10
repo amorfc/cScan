@@ -4,4 +4,6 @@ export const URL = {
   LISTINGS: "listings",
   HISTORICAL: "historical",
   LATEST: "latest",
+  ACTIVE: "active",
+  MAP: "map",
 };
