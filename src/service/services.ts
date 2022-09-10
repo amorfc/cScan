@@ -21,7 +21,9 @@ const CryptoCurrencyApi = () => ({
 
 const ExchangeApi = () => ({
   getLatestExchanges: (params?) => {
-    const url = `${URL.EXCHANGE}/${URL.LISTINGS}/${URL.LATEST}`;
+    // Subscription does not support this so should call with map
+    // const url = `${URL.EXCHANGE}/${URL.LISTINGS}/${URL.LATEST}`;
+    const url = `${URL.EXCHANGE}/${URL.MAP}`;
     const method = API_SERVICE_METHOD.GET;
 
     return Api.start({ url, method, params });
