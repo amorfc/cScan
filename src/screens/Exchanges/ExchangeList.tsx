@@ -19,7 +19,7 @@ const ExchangeList = () => {
   const currentPercentageType = "24";
 
   const renderItem = ({ item, index }: TRenderItem<ExchangeMapItem>) => {
-    return <CText text={item?.id.toString()} />;
+    return <CText text={item.id.toString()} />;
   };
 
   const ListOrderHeader = () => {
