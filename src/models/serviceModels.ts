@@ -39,6 +39,11 @@ export interface Usd {
   last_updated: string;
 }
 
-export interface ExchangeItem {
+export interface ExchangeMapItem {
+  first_historical_data: string;
   id: number;
+  is_active: number;
+  last_historical_data: string;
+  name: string;
+  slug: string;
 }

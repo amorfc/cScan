@@ -3,7 +3,7 @@ import React from "react";
 import BaseContainer from "../../components/Container/BaseContainer";
 import CFlatList, { TRenderItem } from "../../components/Lists/CFlatList";
 import CText from "../../components/Text/CText";
-import { ExchangeItem } from "../../models/serviceModels";
+import { ExchangeMapItem } from "../../models/serviceModels";
 import { useLatestExchanges } from "../../swr/useLatestExchanges";
 
 const ExchangeList = () => {
@@ -11,14 +11,14 @@ const ExchangeList = () => {
     data: exchanges,
     error,
     isValidating,
-  } = useLatestExchanges<ExchangeItem[], string>({
+  } = useLatestExchanges<ExchangeMapItem[], string>({
     swrOptions: { revalidateIfStale: false },
   });
   //Temp variable to order the list
   const currentCurrency = "USD";
   const currentPercentageType = "24";
 
-  const renderItem = ({ item, index }: TRenderItem<ExchangeItem>) => {
+  const renderItem = ({ item, index }: TRenderItem<ExchangeMapItem>) => {
     return <CText text={item?.id.toString()} />;
   };
 
@@ -46,7 +46,7 @@ const ExchangeList = () => {
   return (
     <Flex px={"5"} py={"2"}>
       <ListOrderHeader />
-      <CFlatList<ExchangeItem>
+      <CFlatList<ExchangeMapItem>
         data={exchanges ?? []}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
