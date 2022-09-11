@@ -32,8 +32,7 @@ const MarketList = () => {
           price: quote.price,
           percentChange: quote.percent_change_24h,
         }}
-        //Temp logo
-        logo={undefined}
+        id={item.id}
       />
     );
   };
@@ -42,7 +41,7 @@ const MarketList = () => {
     return (
       <BaseContainer>
         <Stack direction={["row", "row", "row"]}>
-          <Center flex={1}>
+          <Center flex={2}>
             <CText text="#" />
           </Center>
           <Center flex={6}>
@@ -60,7 +59,7 @@ const MarketList = () => {
   };
 
   return (
-    <Flex px={"5"} py={"2"}>
+    <Flex py={"2"}>
       <ListOrderHeader />
       <CFlatList<MarketItem>
         data={markets ?? []}
