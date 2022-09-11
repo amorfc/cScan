@@ -1,5 +1,6 @@
 import { Center, Flex, Stack } from "native-base";
 import React from "react";
+import { Quote } from "../../models/domainModels";
 import CImage from "../Image/CImage";
 import CText from "../Text/CText";
 import CListCardContainer from "./CListCardContainer";
@@ -8,11 +9,7 @@ interface AssetCardProps {
   symbol: string;
   //Temp logo type
   logo: string | undefined;
-  quote: {
-    marketCap: number;
-    price: number;
-    percentChange: number;
-  };
+  quote: Quote;
   rank: number;
 }
 
