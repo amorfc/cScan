@@ -8,11 +8,7 @@ import { MarketItem } from "../../models/serviceModels";
 import { useLatestCCList } from "../../swr/useLatestCCList";
 
 const MarketList = () => {
-  const {
-    data: markets,
-    error,
-    isValidating,
-  } = useLatestCCList<MarketItem[], string>({
+  const { data: markets } = useLatestCCList<MarketItem[], string>({
     swrOptions: { revalidateIfStale: false },
   });
   //Temp variable to order the list
