@@ -6,11 +6,7 @@ import { ExchangeMapItem } from "../../models/serviceModels";
 import { useLatestExchanges } from "../../swr/useLatestExchanges";
 
 const ExchangeList = () => {
-  const {
-    data: exchanges,
-    error,
-    isValidating,
-  } = useLatestExchanges<ExchangeMapItem[], string>({
+  const { data: exchanges } = useLatestExchanges<ExchangeMapItem[], string>({
     swrOptions: { revalidateIfStale: false },
   });
 
