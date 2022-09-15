@@ -1,11 +1,15 @@
 import { Center, Flex, Stack } from "native-base";
-import React from "react";
+import React, { useMemo } from "react";
 import AssetCard from "../../components/Cards/AssetCard";
 import BaseContainer from "../../components/Container/BaseContainer";
+import CListHeaderFilterView, {
+  ListHeaderFilterItem,
+} from "../../components/Filter/CListHeaderFilterView";
 import CFlatList, { TRenderItem } from "../../components/Lists/CFlatList";
 import CText from "../../components/Text/CText";
 import { MarketItem } from "../../models/serviceModels";
 import { useLatestCCList } from "../../swr/useLatestCCList";
+import { getUuid } from "../../utils/common";
 
 const MarketList = () => {
   const { data: markets } = useLatestCCList<MarketItem[], string>({
@@ -54,9 +58,22 @@ const MarketList = () => {
     );
   };
 
+  const getListFilterItems = (): ListHeaderFilterItem[] => [
+    { id: getUuid(), label: "USD", action: () => null },
+    { id: getUuid(), label: "Top 100", action: () => null },
+    { id: getUuid(), label: "Rank", action: () => null },
+  ];
+
+  const filterItems = useMemo(() => getListFilterItems(), []);
+
   return (
     <Flex py={"2"}>
-      <ListOrderHeader />
+      <BaseContainer py={"2"} pl={"2"}>
+        <CListHeaderFilterView items={filterItems} />
+      </BaseContainer>
+      <BaseContainer py={"2"}>
+        <ListOrderHeader />
+      </BaseContainer>
       <CFlatList<MarketItem>
         data={markets ?? []}
         renderItem={renderItem}
