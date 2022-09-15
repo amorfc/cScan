@@ -1,8 +1,9 @@
 import React from "react";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AssetDetail from "../screens/AssetDetail/Portfolio";
 import Markets from "../screens/Markets/Markets";
 import NotFound from "../screens/NotFound/NotFound";
@@ -57,7 +58,7 @@ const RootNavigator = () => {
   );
 };
 
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+const BottomTab = createMaterialBottomTabNavigator<RootTabParamList>();
 
 const BottomTabNavigator = () => {
   return (
@@ -65,12 +66,23 @@ const BottomTabNavigator = () => {
       <BottomTab.Screen
         name={"MarketsStack"}
         component={MarketsNavigator}
-        options={defaultBottomTabBarScreenOptions()}
+        options={{
+          ...defaultBottomTabBarScreenOptions(),
+          tabBarLabel: "Markets",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="alpha-m" color={color} size={26} />
+          ),
+        }}
       />
       <BottomTab.Screen
         name={"Portfolio"}
         component={Portfolio}
-        options={defaultBottomTabBarScreenOptions()}
+        options={{
+          ...defaultBottomTabBarScreenOptions(),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="chart-arc" color={color} size={26} />
+          ),
+        }}
       />
     </BottomTab.Navigator>
   );
