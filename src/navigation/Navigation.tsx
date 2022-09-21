@@ -62,7 +62,7 @@ const BottomTab = createMaterialBottomTabNavigator<RootTabParamList>();
 
 const BottomTabNavigator = () => {
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator shifting={true} activeColor="red" barStyle={{ backgroundColor: "white" }}>
       <BottomTab.Screen
         name={"MarketsStack"}
         component={MarketsNavigator}
