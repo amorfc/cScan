@@ -1,9 +1,8 @@
 import { Icon, IIconProps } from "native-base";
 import React from "react";
-import { iconList } from "./customSvgIconList";
 
 interface CIconProps extends IIconProps {
-  svgName?: typeof iconList;
+  svgName?: JSX.Element;
 }
 
 const CIcon = (props: CIconProps) => {
