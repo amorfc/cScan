@@ -8,7 +8,10 @@ interface CIconProps extends IIconProps {
 
 const CIcon = (props: CIconProps) => {
   const { svgName = undefined } = props;
-  return <Icon {...props}>{svgName ? svgName : null}</Icon>;
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore:next-line
+  return <Icon {...props}>{svgName}</Icon>;
 };
 
 export default CIcon;
